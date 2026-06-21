@@ -9,7 +9,17 @@ A subscription-based digital product company tested a new onboarding and activat
 
 The experiment ran to evaluate whether the new experience meaningfully improves user conversion and early engagement, with the end goal of informing a go no-go launch decision.
 
-## 2. Business Problem Statement
+## 2. Dataset Description
+
+The dataset contains 1,408 rows and 16 columns covering user-level experiment 
+data. Each row represents one user and includes their experiment group, 
+demographic and traffic attributes, funnel behavior (landing page visit, trial 
+start, onboarding completion), conversion outcome, revenue, support tickets, 
+refund requests, engagement score, and days to convert. After removing 8 
+duplicate user IDs, 1,400 unique users were retained for analysis — 
+690 in Control and 710 in Treatment.
+
+## 3. Business Problem Statement
 
 The company needs to decide whether to replace the current onboarding experience with the new campaign across all new users.
 
@@ -21,7 +31,7 @@ To make a sound call, three things need to be true:
 2. Guardrail metrics — refund rate, support tickets, engagement — show no meaningful deterioration
 3. The improvement is reasonably consistent across segments, not driven by one region or device type masking problems elsewhere
 
-## 3. North Star Metric
+## 4. North Star Metric
 
 **Paid Conversion Rate** — users who converted to paid divided by total users in the group
 
@@ -31,7 +41,7 @@ Funnel metrics like landing page visit rate, trial start rate, and onboarding co
 
 The blind-spot risk here is real: a campaign can inflate conversion by creating urgency or pressure without delivering genuine product value. That tends to show up quickly as refund spikes and support volume — which is exactly why those metrics are monitored alongside the North Star, not after the fact.
 
-## 4. KPI Tree Summary
+## 5. KPI Tree Summary
 
 North Star: Paid Conversion Rate
 ├── Funnel Progression
@@ -49,23 +59,23 @@ North Star: Paid Conversion Rate
     ├── Days to Convert
     └── Segment-Level Conversion Decline
 
-## 5. Experiment Analysis Approach
+## 6. Experiment Analysis Approach
 
 - Dataset was validated before analysis — checked for missing values, duplicate user IDs, invalid binary entries, and revenue outliers
 - All KPIs were calculated separately for Control and Treatment
 - At least 3 metrics were broken down by region, device type, traffic source, and plan type
-- A one-tailed two-proportion Z-test was applied to paid conversion rate as the primary test
+- A/B Test — One-tailed t-Test (Two Sample Assuming Unequal Variances) was applied to paid conversion rate as the primary test
 - Guardrail metrics were assessed independently to flag any negative effects
 
-## 6. Hypothesis Test Summary
+## 7. Hypothesis Test Summary
 
 - H0: Paid conversion rate is equal between Control and Treatment
 - H1: Treatment group conversion rate is higher than Control
-- Test type: One-tailed two-proportion Z-test
+- Test type: A/B Test — One-tailed t-Test (Two Sample Assuming Unequal Variances)
 - Significance level: 0.05
 - Result: Updated after analysis in hypothesis_test_notes.md
 
-## 7. Guardrail Metrics Considered
+## 8. Guardrail Metrics Considered
 
 - Refund Rate
 - Support Ticket Rate
@@ -73,11 +83,12 @@ North Star: Paid Conversion Rate
 - Days to Convert
 - Average Revenue Per Converted User
 
-## 8. Final Recommendation
+## 9. Final Recommendation
 
-Detailed in outputs/recommendation_memo.md after completing the full analysis.
+Launch recommended for Free and Premium plan segments based on statistically significant conversion improvement and consistent results across regions and device types. Basic plan segment showed only marginal improvement (3.62% to 3.88%) and should be monitored further before inclusion. Full rollout also pending resolution of support ticket rate increase and revenue per converted 
+user decline.Full details in outputs/recommendation_memo.md.
 
-## 9. Assumptions and Limitations
+## 10. Assumptions and Limitations
 
 - Users were randomly assigned to groups — no selection bias is assumed
 - 30 days is treated as a sufficient observation window for this product type
@@ -89,7 +100,7 @@ Detailed in outputs/recommendation_memo.md after completing the full analysis.
 - 3 revenue outliers identified in revenue_30d (max 8,610.72) and retained — no evidence of data entry error
 - Control group: 690 users, Treatment group: 710 users after cleaning
 
-## 10. Screenshots
+## 11. Screenshots
 
 - screenshots/summary_metrics.png — Control vs Treatment summary table
 - screenshots/hypothesis_test_output.png — Hypothesis test output
