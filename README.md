@@ -43,23 +43,28 @@ The blind-spot risk here is real: a campaign can inflate conversion by creating 
 
 ## 5. KPI Tree Summary
 
-North Star: Paid Conversion Rate
-├── Funnel Progression
-│   ├── Landing Page Visit Rate
-│   └── Trial Start Rate
-├── Onboarding Effectiveness
-│   ├── Onboarding Completion Rate
-│   └── Average Engagement Score
-├── Revenue Quality
-│   ├── Average Revenue Per Converted User
-│   └── Refund Rate
-└── Guardrail Metrics
-    ├── Refund Rate
-    ├── Support Ticket Rate
-    ├── Days to Convert
-    └── Segment-Level Conversion Decline
+**North Star:** Paid Conversion Rate
 
-Detailed calculations, formulas, and segment analysis are available in analysis/experiment_analysis.xlsx. The clean summary output is in outputs/experiment_summary.xlsx.
+**Primary Driver 1 — Funnel Progression**
+- Landing Page Visit Rate
+- Trial Start Rate
+
+**Primary Driver 2 — Onboarding Effectiveness**
+- Onboarding Completion Rate
+- Average Engagement Score
+
+**Primary Driver 3 — Revenue Quality**
+- Average Revenue Per Converted User
+- Refund Rate
+
+**Guardrail Metrics**
+- Refund Rate
+- Support Ticket Rate
+- Days to Convert
+- Segment-Level Conversion Decline
+
+Full KPI tree visual available in outputs/kpi_tree.png
+
 
 ## 6. Experiment Analysis Approach
 
@@ -68,6 +73,8 @@ Detailed calculations, formulas, and segment analysis are available in analysis/
 - At least 3 metrics were broken down by region, device type, traffic source, and plan type
 - A/B Test — One-tailed t-Test (Two Sample Assuming Unequal Variances) was applied to paid conversion rate as the primary test
 - Guardrail metrics were assessed independently to flag any negative effects
+
+Detailed calculations, formulas, and segment analysis are available in analysis/experiment_analysis.xlsx. The clean summary output is in outputs/experiment_summary.xlsx.
 
 ## 7. Hypothesis Test Summary
 
