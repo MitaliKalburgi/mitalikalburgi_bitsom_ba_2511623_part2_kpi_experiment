@@ -59,6 +59,8 @@ North Star: Paid Conversion Rate
     ├── Days to Convert
     └── Segment-Level Conversion Decline
 
+Detailed calculations, formulas, and segment analysis are available in analysis/experiment_analysis.xlsx. The clean summary output is in outputs/experiment_summary.xlsx.
+
 ## 6. Experiment Analysis Approach
 
 - Dataset was validated before analysis — checked for missing values, duplicate user IDs, invalid binary entries, and revenue outliers
