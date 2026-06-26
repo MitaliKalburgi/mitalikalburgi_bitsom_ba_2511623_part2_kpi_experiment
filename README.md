@@ -82,7 +82,8 @@ Detailed calculations, formulas, and segment analysis are available in analysis/
 - H1: Treatment group conversion rate is higher than Control
 - Test type: A/B Test — One-tailed t-Test (Two Sample Assuming Unequal Variances)
 - Significance level: 0.05
-- Result: Updated after analysis in hypothesis_test_notes.md
+- P-value (one-tailed): 0.000513
+- Result: Null hypothesis rejected — Treatment group shows a statistically significant improvement in paid conversion rate
 
 ## 8. Guardrail Metrics Considered
 
@@ -101,7 +102,13 @@ user decline.Full details in outputs/recommendation_memo.md.
 
 - Users were randomly assigned to groups — no selection bias is assumed
 - 30 days is treated as a sufficient observation window for this product type
-- 8 duplicate user IDs were identified and removed, leaving 1,400 unique users for analysis
+- Duplicate user IDs:
+  - Original records: 1,408
+  - Duplicate user ID records identified: 8
+  - Final unique users used for analysis: 1,400
+  - Control: 690, Treatment: 710
+  - Duplicates were removed keeping the first occurrence of each user_id
+  - All 8 duplicate records had identical values to their original entry,so no conflicting data was silently removed
 - 18 missing values in device_type and 24 in traffic_source were replaced with 'Unknown'to retain those rows in segment analysis
 - 14 missing values in engagement_score were left blank — treated as genuine missing data
 - 1,336 missing values in days_to_convert were left blank — this column is only populatedfor users who converted, so blanks are expected and correct
